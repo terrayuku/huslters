@@ -1,0 +1,57 @@
+<section class="page-section bg-light" id="shop">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Shop</h2>
+      <h3 class="section-subheading text-muted">with Swag</h3>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-sm-6 mb-4" *ngFor="let item of items">
+        <div class="shop-item">
+          <a class="shop-link" data-toggle="modal" href="#{{item.itemName}}"
+          ><div class="shop-hover">
+            <div class="shop-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+          </div>
+            <img class="img-fluid" src="{{item.itemUrl}}" alt=""
+            /></a>
+          <div class="shop-caption">
+            <div class="shop-caption-heading">{{item.itemName}}</div>
+            <div class="shop-caption-subheading text-muted">{{item.itemDescription}}</div>
+          </div>
+        </div>
+
+        <div class="shop-modal modal fade" id="{{item.itemName}}" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" /></div>
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-lg-8">
+                    <div class="modal-body">
+                      <!-- Project Details Go Here-->
+                      <h2 class="text-uppercase">{{item.itemName}}</h2>
+                      <div class="row">
+                        <div class="col-lg-4 col-sm-6 mb-4">
+                          <img class="img-fluid d-block mx-auto" src="{{item.itemUrl}}" alt="" />
+                          <p>{{item.itemDescription}}</p>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 mb-4">
+                          <ul class="list-inline">
+                            <li>Price: R{{item.itemPrice}}</li>
+                            <li>Size: S L XL XXL</li>
+                            <li>Quantity: <input type="number" class="form-control" min="1" /></li>
+                          </ul>
+                          <button class="btn btn-secondary" data-dismiss="modal" type="button"><i class="fas fa-plus mr-1"></i>Add to cart</button>
+                        </div>
+                      </div>
+                      <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Close {{item.itemName}}</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
