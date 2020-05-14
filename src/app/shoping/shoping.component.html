@@ -35,15 +35,36 @@
                           <p>{{item.itemDescription}}</p>
                         </div>
                         <div class="col-lg-4 col-sm-6 mb-4">
-                          <ul class="list-inline">
-                            <li>Price: R{{item.itemPrice}}</li>
-                            <li>Size: S L XL XXL</li>
-                            <li>Quantity: <input type="number" class="form-control" min="1" /></li>
-                          </ul>
-                          <button class="btn btn-secondary" data-dismiss="modal" type="button"><i class="fas fa-plus mr-1"></i>Add to cart</button>
+                          <form [formGroup]="shoppingForm">
+                            <ul class="list-inline">
+                              <li>
+                                <label class="col-form-label-lg" for="price">Price</label>
+                                R <label class="col-form-label-lg" for="amount">{{item.itemPrice}}</label>
+                              </li>
+                              <li>
+                                <label class="col-form-label-lg" for="size" style="padding-right: 5px;">Size </label>
+
+                                <label class="col-form-label-sm" for="small">S</label>
+                                <input type="checkbox" class="custom-checkbox" formControlName="small" value="small" />
+                                <label class="col-form-label-sm" for="large">L</label>
+                                <input type="checkbox" class="custom-checkbox" formControlName="large" value="large" />
+                                <label class="col-form-label-sm" for="xlarge">XL</label>
+                                <input type="checkbox" class="custom-checkbox" formControlName="xlarge" value="xlarge">
+                                <label class="col-form-label-sm" for="xxlarge">XXL</label>
+                                <input type="checkbox" class="custom-checkbox" formControlName="xxlarge" value="xxlarge">
+                              </li>
+                              <li>
+                                <label class="col-form-label-lg" for="quantity" style="padding-right: 5px;">Quantity </label>
+                                <input type="number" class="form-control-sm" formControlName="quantity" min="1" />
+                              </li>
+                            </ul>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button"
+                            (click)="addToCart(shoppingForm.value, item)">
+                              <i class="fas fa-plus mr-1"></i>Add to cart</button>
+                          </form>
                         </div>
                       </div>
-                      <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Close {{item.itemName}}</button>
+                      <button class="btn btn-secondary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Close {{item.itemName}}</button>
                     </div>
                   </div>
                 </div>

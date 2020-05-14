@@ -28,6 +28,7 @@ export class AdditemComponent implements OnInit {
       image: ['', Validators.required]
     });
   }
+
   browse(event) {
     this.image = event.target.files[0];
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdditemService } from "../services/additem.service";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-shoping',
@@ -8,13 +9,28 @@ import { AdditemService } from "../services/additem.service";
 })
 export class ShopingComponent implements OnInit {
 
+  shoppingForm: FormGroup;
   items = [];
+  cartList = [];
   constructor(
-    public addItemService: AdditemService
+    public addItemService: AdditemService,
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
-    this.getAllItems()
+    this.createForm();
+    this.getAllItems();
+  }
+
+  createForm() {
+    this.shoppingForm = this.fb.group({
+      amount: ['', Validators.required],
+      small: ['', Validators.required],
+      large: ['', Validators.required],
+      xlarge: ['', Validators.required],
+      xxlarge: ['', Validators.required],
+      quantity: ['', Validators.required]
+    });
   }
 
   getAllItems() {
@@ -29,6 +45,16 @@ export class ShopingComponent implements OnInit {
       .catch(err => {
         console.log(err);
       })
+  }
+
+  addToCart(value, item) {
+    console.log(value, item);
+    this.cartList.push({
+      "item": item,
+      "order": value
+    });
+
+    console.log(this.cartList);
   }
 
 }
