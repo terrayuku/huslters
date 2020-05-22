@@ -79,6 +79,8 @@
 
                                 <label class="col-form-label-sm" for="small">S</label>
                                 <input type="checkbox" class="custom-checkbox" formControlName="small" value="small" />
+                                <label class="col-form-label-sm" for="small">M</label>
+                                <input type="checkbox" class="custom-checkbox" formControlName="medium" value="medium" />
                                 <label class="col-form-label-sm" for="large">L</label>
                                 <input type="checkbox" class="custom-checkbox" formControlName="large" value="large" />
                                 <label class="col-form-label-sm" for="xlarge">XL</label>
@@ -110,20 +112,37 @@
   </div>
 </section>
 
+<section class="page-section bg-light" id="order" *ngIf="success">
+  <div class="container">
+    <div class="text-center">
+      <div class="row thank-you">
+        <div class="col-lg-12 col-sm-12 mb-12">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="section-heading text-uppercase">Thank You</h2>
+            </div>
+            <div class="card-body">
+
+              <h3 class="section-subheading">
+                <img class="rounded-circle img-fluid"
+                    width="20%" height="20%" src="assets/img/bag.jpeg" alt="Thank You Bag" />
+                    Your order has been received. We will contact you soon.</h3>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary" (click)="ok()" type="button">
+                Ok</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="page-section bg-light" id="order" *ngIf="cartList.length >= 1">
   <div class="container">
     <div class="text-center">
       <h2 class="section-heading text-uppercase">Order</h2>
       <h3 class="section-subheading text-muted">with Swag {{ success }}</h3>
-    </div>
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" *ngIf="success">
-      <div class="toast-header">
-        <strong class="text-uppercase">Order Received</strong>
-        <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" /></div>
-      </div>
-      <div class="toast-body">
-        Thank you. Your order has been received we will contact you soon.
-      </div>
     </div>
     <div class="row">
       <div class="col-lg-12 col-sm-12 mb-12">

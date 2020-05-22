@@ -70,6 +70,10 @@ export class ShopingComponent implements OnInit {
     this.cartList = [];
   }
 
+  ok() {
+    this.success = false;
+  }
+
   addToCart(value, item) {
 
     this.cartList.push({
