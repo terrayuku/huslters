@@ -1,20 +1,20 @@
-[debug] [2020-05-22T20:28:56.575Z] ----------------------------------------------------------------------
-[debug] [2020-05-22T20:28:56.577Z] Command:       /usr/local/Cellar/node/13.2.0/bin/node /usr/local/bin/firebase deploy --only hosting:hustlersld.co.za
-[debug] [2020-05-22T20:28:56.578Z] CLI Version:   8.4.0
-[debug] [2020-05-22T20:28:56.578Z] Platform:      darwin
-[debug] [2020-05-22T20:28:56.578Z] Node Version:  v13.2.0
-[debug] [2020-05-22T20:28:56.579Z] Time:          Fri May 22 2020 22:28:56 GMT+0200 (South Africa Standard Time)
-[debug] [2020-05-22T20:28:56.579Z] ----------------------------------------------------------------------
-[debug] [2020-05-22T20:28:56.579Z] 
-[debug] [2020-05-22T20:28:56.588Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2020-05-22T20:28:56.589Z] > authorizing via signed-in user
-[debug] [2020-05-22T20:28:56.589Z] [iam] checking project hustlersld for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2020-05-22T20:28:56.592Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/hustlersld:testIamPermissions  
+[debug] [2020-05-22T21:07:23.360Z] ----------------------------------------------------------------------
+[debug] [2020-05-22T21:07:23.362Z] Command:       /usr/local/Cellar/node/13.2.0/bin/node /usr/local/bin/firebase deploy --only hosting:hustlersld.co.za
+[debug] [2020-05-22T21:07:23.362Z] CLI Version:   8.4.0
+[debug] [2020-05-22T21:07:23.362Z] Platform:      darwin
+[debug] [2020-05-22T21:07:23.363Z] Node Version:  v13.2.0
+[debug] [2020-05-22T21:07:23.364Z] Time:          Fri May 22 2020 23:07:23 GMT+0200 (South Africa Standard Time)
+[debug] [2020-05-22T21:07:23.364Z] ----------------------------------------------------------------------
+[debug] [2020-05-22T21:07:23.364Z] 
+[debug] [2020-05-22T21:07:23.373Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-05-22T21:07:23.373Z] > authorizing via signed-in user
+[debug] [2020-05-22T21:07:23.374Z] [iam] checking project hustlersld for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-05-22T21:07:23.377Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/hustlersld:testIamPermissions  
  {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2020-05-22T20:28:59.140Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 22 May 2020 20:28:58 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1542","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2020-05-22T20:28:59.143Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/hustlersld  
+[debug] [2020-05-22T21:07:26.278Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 22 May 2020 21:07:25 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1792","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-22T21:07:26.281Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/hustlersld  
  
-[debug] [2020-05-22T20:29:00.160Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 22 May 2020 20:28:59 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-22T21:07:26.894Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 22 May 2020 21:07:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
 [info] 
 [info] === Deploying to 'hustlersld'...
 [info] 
@@ -23,7 +23,7 @@
 [info] ✔  Deploy complete! 
 [info] 
 [info] Project Console: https://console.firebase.google.com/project/hustlersld/overview
-[debug] [2020-05-22T20:29:00.664Z] TypeError: Cannot read property 'deploys' of undefined
+[debug] [2020-05-22T21:07:27.427Z] TypeError: Cannot read property 'deploys' of undefined
     at /usr/local/lib/node_modules/firebase-tools/lib/deploy/index.js:84:36
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
 [error] 
