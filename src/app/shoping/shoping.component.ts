@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdditemService } from "../services/additem.service";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { OrderService } from "../services/order.service";
 
 @Component({
   selector: 'app-shoping',
@@ -10,10 +11,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ShopingComponent implements OnInit {
 
   shoppingForm: FormGroup;
+  orderForm: FormGroup;
   items = [];
   cartList = [];
+  success: Boolean;
+  error: Boolean;
   constructor(
     public addItemService: AdditemService,
+    public orderService: OrderService,
     private fb: FormBuilder,
   ) { }
 
@@ -24,12 +29,17 @@ export class ShopingComponent implements OnInit {
 
   createForm() {
     this.shoppingForm = this.fb.group({
-      amount: ['', Validators.required],
-      small: ['', Validators.required],
-      large: ['', Validators.required],
-      xlarge: ['', Validators.required],
-      xxlarge: ['', Validators.required],
-      quantity: ['', Validators.required]
+      small: [null, Validators.required],
+      medium: [null, Validators.required],
+      large: [null, Validators.required],
+      xlarge: [null, Validators.required],
+      xxlarge: [null, Validators.required],
+      quantity: [1, Validators.required]
+    });
+
+    this.orderForm = this.fb.group({
+      userName: ['', Validators.required],
+      userPhone: ['', Validators.required]
     });
   }
 
@@ -38,7 +48,7 @@ export class ShopingComponent implements OnInit {
       .then(items => {
         console.log(items);
         items.forEach(i => {
-            console.log(i.payload.val(), i.payload.key);
+            // console.log(i.payload.val(), i.payload.key);
             this.items.push(i.payload.val());
         })
       })
@@ -48,13 +58,34 @@ export class ShopingComponent implements OnInit {
   }
 
   addToCart(value, item) {
-    console.log(value, item);
+
     this.cartList.push({
       "item": item,
       "order": value
     });
-
     console.log(this.cartList);
+  }
+
+  isEmptyObject(o) {
+    return Object.keys(o).every(function(x) {
+      if(o[x]===''||o[x]===null) {
+        console.log("Null");
+      }
+        return o[x];  // or just "return o[x];" for falsy values
+    });
+  }
+
+  order(user) {
+    this.orderService.order(this.cartList, user)
+      .then(res => {
+        this.success = true;
+        this.shoppingForm.reset();
+        this.cartList = [];
+        console.log(this.success, this.cartList);
+      })
+      .catch(err => {
+        this.error = false;
+      });
   }
 
 }
