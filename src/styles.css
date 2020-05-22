@@ -6139,7 +6139,7 @@ button.bg-danger:focus {
 }
 
 .bg-light {
-  background-color: #f8f9fa !important;
+  background-color: white !important;
 }
 
 a.bg-light:hover, a.bg-light:focus,
@@ -10069,7 +10069,7 @@ img::-moz-selection {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     border: none;
-    background-color: transparent;
+    background-color: #212529;;
     transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
   }
   #mainNav .navbar-brand {

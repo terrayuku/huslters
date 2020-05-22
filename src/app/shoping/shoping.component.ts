@@ -16,6 +16,7 @@ export class ShopingComponent implements OnInit {
   cartList = [];
   success: Boolean;
   error: Boolean;
+  shopping: Boolean;
   constructor(
     public addItemService: AdditemService,
     public orderService: OrderService,
@@ -55,6 +56,18 @@ export class ShopingComponent implements OnInit {
       .catch(err => {
         console.log(err);
       })
+  }
+
+  showShop() {
+    if(this.shopping)
+      this.shopping = false;
+    else
+      this.shopping = true;
+    console.log(this.shopping);
+  }
+
+  clear() {
+    this.cartList = [];
   }
 
   addToCart(value, item) {
