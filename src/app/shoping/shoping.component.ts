@@ -75,7 +75,6 @@ export class ShopingComponent implements OnInit {
   }
 
   addToCart(value, item) {
-
     this.cartList.push({
       "item": item,
       "order": value
@@ -85,6 +84,7 @@ export class ShopingComponent implements OnInit {
 
   isEmptyObject(o) {
     return Object.keys(o).every(function(x) {
+      console.log(x);
       if(o[x]===''||o[x]===null) {
         console.log("Null");
       }

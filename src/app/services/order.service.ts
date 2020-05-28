@@ -25,4 +25,13 @@ export class OrderService {
         });
     });
   }
+
+  getAllOrders() {
+    return new Promise<any>((resolve, reject) => {
+      this.db.list("orders").snapshotChanges()
+        .subscribe(orders => {
+          resolve(orders);
+        });
+    });
+  }
 }

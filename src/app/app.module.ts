@@ -10,6 +10,7 @@ import { AdditemComponent } from './additem/additem.component';
 import { HomeComponent } from './home/home.component';
 import { ShopingComponent } from './shoping/shoping.component';
 import { OrderComponent } from './order/order.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { OrderComponent } from './order/order.component';
     AdditemComponent,
     HomeComponent,
     ShopingComponent,
-    OrderComponent
+    OrderComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

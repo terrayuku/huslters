@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" id="header-desktop" href="#page-top">
+      Hustlers Living Dangerous</a>
+      <a class="navbar-brand js-scroll-trigger" id="header-mobile" href="#page-top">
+        Hustlers Swag</a>
+      <button class="navbar-toggler navbar-toggler-right"
+      type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+        <i class="fas fa-bars ml-1"></i>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase">
+        <li class="nav-item" id="header-desktop"><span class="nav-link js-scroll-trigger">|</span></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="page-section bg-light">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Hustlers</h2>
+      <h3 class="section-subheading text-muted">with Swag</h3>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-sm-6 mb-4" *ngFor="let order of orders">
+        <div class="shop-item">
+          <a class="shop-link" data-toggle="modal" href="#{{order.order[0].item.itemName}}"
+          >
+            <img class="img-fluid" src="{{order.order[0].item.itemUrl}}" alt=""
+            /></a>
+          <div class="shop-caption">
+            <div class="shop-caption-heading">{{order.person.userName}}</div>
+            <div class="shop-caption-subheading text-muted">{{order.person.userPhone}}</div>
+            <div class="shop-caption-subheading text-muted">Ordered Items: {{order.order.length}}</div>
+          </div>
+        </div>
+
+        <div class="shop-modal modal fade" id="{{order.order[0].item.itemName}}" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" /></div>
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-lg-8">
+                    <div class="modal-body">
+                      <!-- Project Details Go Here-->
+                      <div class="row" *ngFor="let o of order.order">
+                        <div class="col-lg-6 col-sm-6 mb-4">
+                          <h2 class="text-uppercase">{{o.item.itemName}}</h2>
+                          <img class="img-fluid d-block mx-auto" src="{{o.item.itemUrl}}" alt="" />
+                          <p>Quantity: {{o.order.quantity}}</p>
+                          <div *ngFor="let s of objectKeys(o.order)">
+                            <p> {{s === "quantity" ? "" : 'Size: ' + s}}</p>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-4 mb-4">
+                          <!-- <form [formGroup]="ordersForm"> -->
+                            <ul class="list-inline">
+                              <li>
+                                <label class="col-form-label-lg" for="price">Price</label>
+                                R <label class="col-form-label-lg" for="amount">{{o.item.itemPrice}}</label>
+                              </li>
+                            </ul>
+                            <!-- <button class="btn btn-primary" data-dismiss="modal" type="button">
+                              <i class="fas fa-plus mr-1"></i>Add to cart</button> -->
+                          <!-- </form> -->
+                        </div>
+                      </div>
+                      <button class="btn btn-secondary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Close {{order.person.userName}}</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
