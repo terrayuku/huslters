@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { ShopingComponent } from './shoping/shoping.component';
 import { OrderComponent } from './order/order.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],

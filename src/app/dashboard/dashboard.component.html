@@ -11,16 +11,25 @@
         <i class="fas fa-bars ml-1"></i>
       </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav text-uppercase">
-        <li class="nav-item" id="header-desktop"><span class="nav-link js-scroll-trigger">|</span></li>
-        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
-      </ul>
+      <ul class="navbar-nav text-uppercase ml-auto" *ngIf="!loggedIn">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#login">
+            Login
+          </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav text-uppercase ml-auto" *ngIf="loggedIn">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="#login" (click)="doLogout()">
+          Logout
+        </a>
+      </li>
+  </ul>
     </div>
   </div>
 </nav>
 
-<section class="page-section bg-light">
+<section class="page-section bg-light" *ngIf="loggedIn">
   <div class="container">
     <div class="text-center">
       <h2 class="section-heading text-uppercase">Hustlers</h2>
@@ -77,6 +86,32 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section bg-light" id="login" *ngIf="!loggedIn">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Login</h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-sm-6 mb-4">
+        <div class="shop-item">
+          <div class="shop-caption">
+            <form [formGroup]="loginForm">
+              <label class="col-form-label-sm" for="small">Email</label>
+              <input type="text" class="form-control" formControlName="email" />
+              <label class="col-form-label-sm" for="medium">Password</label>
+              <input type="password" class="form-control" formControlName="password" />
+
+              <button class="btn btn-primary" data-dismiss="modal" type="button" style="margin-top: 1rem;"
+              (click)="doLogin(loginForm.value)">
+                Login</button>
+            </form>
           </div>
         </div>
       </div>
