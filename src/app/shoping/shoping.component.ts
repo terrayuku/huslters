@@ -79,6 +79,7 @@ export class ShopingComponent implements OnInit {
       "item": item,
       "order": value
     });
+    this.shoppingForm.reset();
     console.log(this.cartList);
   }
 
