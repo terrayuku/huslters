@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit {
       .then(orders => {
         console.log(orders);
         orders.forEach(i => {
-            // console.log(i.payload.val(), i.payload.key);
+            console.log(i.payload.val(), i.payload.key);
             this.orders.push(i.payload.val());
         })
       })

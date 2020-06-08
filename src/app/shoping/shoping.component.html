@@ -3,7 +3,7 @@
     <a class="navbar-brand js-scroll-trigger" id="header-desktop" href="#page-top">
       Hustlers Living Dangerous</a>
       <a class="navbar-brand js-scroll-trigger" id="header-mobile" href="#page-top">
-        Hustlers Swag</a>
+        Hustlers Living Dangerous</a>
       <button class="navbar-toggler navbar-toggler-right"
       type="button" data-toggle="collapse" data-target="#navbarResponsive"
       aria-controls="navbarResponsive" aria-expanded="false"
@@ -97,6 +97,36 @@
                                 <label class="col-form-label-lg" for="quantity" style="padding-right: 5px;">Quantity </label>
                                 <input type="number" class="form-control-sm" formControlName="quantity" min="1" />
                               </li>
+                              <li *ngIf="shoppingForm.value.quantity <= 1">
+                                <select class="custom-select" formControlName="color">
+                                  <option value="">Select Color</option>
+                                  <option value="White">White</option>
+                                  <option value="Black">Black</option>
+                                  <option value="Blue">Blue</option>
+                                  <option value="Green">Green</option>
+                                  <option value="Grey">Grey</option>
+                                  <option value="Red">Red</option>
+                                  <option value="Navy">Navy</option>
+                                  <option value="Royal Blue">Royal Blue</option>
+                                  <option value="charcoal">Charcoal</option>
+                                  <option value="Maroon">Maroon</option>
+                                </select>
+                              </li>
+                              <li *ngIf="shoppingForm.value.quantity > 1">
+                                <select class="custom-select" formControlName="color" multiple>
+                                  <option value="">Select Colors</option>
+                                  <option value="White">White</option>
+                                  <option value="Black">Black</option>
+                                  <option value="Blue">Blue</option>
+                                  <option value="Green">Green</option>
+                                  <option value="Grey">Grey</option>
+                                  <option value="Red">Red</option>
+                                  <option value="Navy">Navy</option>
+                                  <option value="Royal Blue">Royal Blue</option>
+                                  <option value="charcoal">Charcoal</option>
+                                  <option value="Maroon">Maroon</option>
+                                </select>
+                              </li>
                             </ul>
                             <button class="btn btn-primary" data-dismiss="modal" type="button"
                             (click)="addToCart(shoppingForm.value, item)">
@@ -130,14 +160,11 @@
 
               <h3 class="section-subheading">
                 <img class="rounded-circle img-fluid"
-                    width="20%" height="20%" src="assets/img/bag.jpeg" alt="Thank You Bag" />
+                    width="20%" height="20%" src="assets/img/prod/thankyoubag.jpeg" alt="Thank You Bag" />
                     Your order has been received. We will contact you soon. <br />
-                    Dependent on size and color availability, orders take <strong>7 working
-                    days</strong> after size and color is confirmed. <strong>You need to pay 50%
-                    deposit once the confirmation is done.</strong> Customers outside of
-                    Gauteng cover courier fee of R99 via postnet or aramex.
-                    <strong>If you spend R1500 and more you won’t be liable for courier
-                      Hustlers will cover it.</strong>
+                    Customer need to make a payment <strong>within 3 working days</strong> after
+                    the confirmation of size and color. Please note that orders
+                    will take <strong>7 working days</strong> counting from the day the payment is received.
                   </h3>
             </div>
             <div class="card-footer">

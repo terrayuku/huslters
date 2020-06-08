@@ -63,8 +63,9 @@
                           <h2 class="text-uppercase">{{o.item.itemName}}</h2>
                           <img class="img-fluid d-block mx-auto" src="{{o.item.itemUrl}}" alt="" />
                           <p>Quantity: {{o.order.quantity}}</p>
+                          <p>Color: {{o.order.color}}</p>
                           <div *ngFor="let s of objectKeys(o.order)">
-                            <p> {{s === "quantity" ? "" : 'Size: ' + s}}</p>
+                            <p> {{s === "quantity" ||  s === "color" ? "" : 'Size: ' + s}}</p>
                           </div>
                         </div>
                         <div class="col-lg-4 col-sm-4 mb-4">

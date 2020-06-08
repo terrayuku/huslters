@@ -24,6 +24,7 @@ addItem(value, image) {
                 itemName: value.name,
                 itemPrice: value.price,
                 itemDescription: value.description,
+                itemOrder: value.itemOrder,
                 itemUrl: downloadURL
               }).then(response => {
                 console.log("Uploaded");

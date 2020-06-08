@@ -10152,7 +10152,10 @@ header.masthead .masthead-heading {
 @media screen and (max-width: 768px) {
 
 #header-desktop {display: none;}
-#header-mobile {display: block;}
+#header-mobile {
+  display: block;
+  letter-spacing: normal !important;
+}
 
 }
 #shop .shop-item {

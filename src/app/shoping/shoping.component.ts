@@ -35,7 +35,8 @@ export class ShopingComponent implements OnInit {
       large: [null, Validators.required],
       xlarge: [null, Validators.required],
       xxlarge: [null, Validators.required],
-      quantity: [1, Validators.required]
+      quantity: [1, Validators.required],
+      color: [null, Validators.required]
     });
 
     this.orderForm = this.fb.group({
@@ -47,11 +48,12 @@ export class ShopingComponent implements OnInit {
   getAllItems() {
     this.addItemService.getAllItems()
       .then(items => {
-        console.log(items);
+
         items.forEach(i => {
-            // console.log(i.payload.val(), i.payload.key);
             this.items.push(i.payload.val());
-        })
+        });
+
+        this.items.sort((a, b) => a.itemOrder - b.itemOrder);
       })
       .catch(err => {
         console.log(err);
@@ -83,23 +85,12 @@ export class ShopingComponent implements OnInit {
     console.log(this.cartList);
   }
 
-  isEmptyObject(o) {
-    return Object.keys(o).every(function(x) {
-      console.log(x);
-      if(o[x]===''||o[x]===null) {
-        console.log("Null");
-      }
-        return o[x];  // or just "return o[x];" for falsy values
-    });
-  }
-
   order(user) {
     this.orderService.order(this.cartList, user)
       .then(res => {
         this.success = true;
         this.shoppingForm.reset();
         this.cartList = [];
-        console.log(this.success, this.cartList);
       })
       .catch(err => {
         this.error = false;
