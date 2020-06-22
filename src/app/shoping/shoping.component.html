@@ -44,6 +44,7 @@
     </div>
     <div class="row">
       <div class="col-lg-4 col-sm-6 mb-4" *ngFor="let item of items">
+        <!-- Select Item -->
         <div class="shop-item">
           <a class="shop-link" data-toggle="modal" href="#{{item.itemName}}"
           ><div class="shop-hover">
@@ -57,7 +58,41 @@
           </div>
         </div>
 
-        <div class="shop-modal modal fade" id="{{item.itemName}}" tabindex="-1" role="dialog" aria-hidden="true">
+          <!-- Grid View of Simillar Items -->
+          <div class="shop-modal modal fade" id="Hoody" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" /></div>
+                <!-- <div class="container"> -->
+                  <div class="row justify-content-center">
+                      <div class="modal-body">
+                        <ul>
+                          <li>
+                            <img class="img-fluid d-block mx-auto" src="{{item.itemUrl}}" alt="" />
+                            <p>{{item.itemDescription}}</p>
+                          </li>
+                          <li>
+                            <img class="img-fluid d-block mx-auto" src="../assets/img/items/HBlack.jpeg" alt="" />
+                            <p>{{item.itemDescription}}</p>
+                          </li>
+                          <li>
+                            <img class="img-fluid d-block mx-auto" src="{{item.itemUrl}}" alt="" />
+                            <p>{{item.itemDescription}}</p>
+                          </li>
+                          <li>
+                            <img class="img-fluid d-block mx-auto" src="{{item.itemUrl}}" alt="" />
+                            <p>{{item.itemDescription}}</p>
+                          </li>
+                        </ul>
+                        </div>
+                      </div>
+                <!-- </div> -->
+              </div>
+            </div>
+          </div>
+
+        <!-- View and Checkout Item -->
+        <div class="shop-modal modal fade" id="{{item.itemNam}}" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" /></div>
