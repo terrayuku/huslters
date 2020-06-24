@@ -5822,9 +5822,19 @@ a.close.disabled {
 }
 
 .carousel-inner {
+  left: 24rem;
   position: relative;
-  width: 100%;
+  width: 40%;
   overflow: hidden;
+}
+
+@media (max-width: 576px) {
+  .carousel-inner {
+    left: 0 !important;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
 }
 .carousel-inner::after {
   display: block;
@@ -5919,11 +5929,21 @@ a.close.disabled {
 }
 
 .carousel-control-prev {
-  left: 0;
+  left: 20rem;
 }
 
 .carousel-control-next {
-  right: 0;
+  right: 24rem;
+}
+@media (max-width: 576px) {
+
+  .carousel-control-prev {
+    left: 0;
+  }
+
+  .carousel-control-next {
+    right: 0;
+  }
 }
 
 .carousel-control-prev-icon,

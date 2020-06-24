@@ -24,25 +24,8 @@ export class ShopingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.createForm();
+    // this.createForm();
     this.getAllItems();
-  }
-
-  createForm() {
-    this.shoppingForm = this.fb.group({
-      small: [null, Validators.required],
-      medium: [null, Validators.required],
-      large: [null, Validators.required],
-      xlarge: [null, Validators.required],
-      xxlarge: [null, Validators.required],
-      quantity: [1, Validators.required],
-      color: [null, Validators.required]
-    });
-
-    this.orderForm = this.fb.group({
-      userName: ['', Validators.required],
-      userPhone: ['', Validators.required]
-    });
   }
 
   getAllItems() {
@@ -52,7 +35,7 @@ export class ShopingComponent implements OnInit {
         items.forEach(i => {
             this.items.push(i.payload.val());
         });
-
+        console.log(this.items);
         this.items.sort((a, b) => a.itemOrder - b.itemOrder);
       })
       .catch(err => {
@@ -66,35 +49,6 @@ export class ShopingComponent implements OnInit {
     else
       this.shopping = true;
     console.log(this.shopping);
-  }
-
-  clear() {
-    this.cartList = [];
-  }
-
-  ok() {
-    this.success = false;
-  }
-
-  addToCart(value, item) {
-    this.cartList.push({
-      "item": item,
-      "order": value
-    });
-    this.shoppingForm.reset();
-    console.log(this.cartList);
-  }
-
-  order(user) {
-    this.orderService.order(this.cartList, user)
-      .then(res => {
-        this.success = true;
-        this.shoppingForm.reset();
-        this.cartList = [];
-      })
-      .catch(err => {
-        this.error = false;
-      });
   }
 
 }

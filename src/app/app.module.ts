@@ -12,6 +12,7 @@ import { ShopingComponent } from './shoping/shoping.component';
 import { OrderComponent } from './order/order.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     HomeComponent,
     ShopingComponent,
     OrderComponent,
-    DashboardComponent
+    DashboardComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,200 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" id="header-desktop" href="#page-top">
+      Hustlers Living Dangerous</a>
+      <a class="navbar-brand js-scroll-trigger" id="header-mobile" href="#page-top">
+        Hustlers Living Dangerous</a>
+      <button class="navbar-toggler navbar-toggler-right"
+      type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+        <i class="fas fa-bars ml-1"></i>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase">
+        <li class="nav-item" id="header-desktop"><span class="nav-link js-scroll-trigger">|</span></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#shop">Shop</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+      </ul>
+      <ul class="navbar-nav text-uppercase ml-auto">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#order">
+            <i class="fas fa-shopping-cart"></i>
+          </a>
+        </li>
+    </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- View and Checkout Item -->
+<div class="page-section bg-light" id="{{itemName}}">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="modal-body">
+              <!-- Project Details Go Here-->
+              <h2 class="text-uppercase">{{itemName}}</h2>
+              <div class="row">
+                <div class="col-lg-4 col-sm-6 mb-4">
+                  <img class="img-fluid d-block mx-auto" src="{{itemUrl}}" alt="" />
+                  <p>{{itemDescription}}</p>
+                </div>
+                <div class="col-lg-6 col-sm-6 mb-4">
+                  <form [formGroup]="shoppingForm">
+                    <ul class="list-inline">
+                      <li>
+                        <label class="col-form-label-lg" for="price">Price</label>
+                        R <label class="col-form-label-lg" for="amount">{{itemPrice}}</label>
+                      </li>
+                      <li>
+                        <label class="col-form-label-lg" for="size" style="padding-right: 5px;">Size </label>
+
+                        <label class="col-form-label-sm" for="small">S</label>
+                        <input type="checkbox" class="custom-checkbox" formControlName="small" value="small" />
+                        <label class="col-form-label-sm" for="medium">M</label>
+                        <input type="checkbox" class="custom-checkbox" formControlName="medium" value="medium" />
+                        <label class="col-form-label-sm" for="large">L</label>
+                        <input type="checkbox" class="custom-checkbox" formControlName="large" value="large" />
+                        <label class="col-form-label-sm" for="xlarge">XL</label>
+                        <input type="checkbox" class="custom-checkbox" formControlName="xlarge" value="xlarge" />
+                        <label class="col-form-label-sm" for="xxlarge">XXL</label>
+                        <input type="checkbox" class="custom-checkbox" formControlName="xxlarge" value="xxlarge" />
+                      </li>
+                      <li>
+                        <label class="col-form-label-lg" for="quantity" style="padding-right: 5px;">Quantity </label>
+                        <input type="number" class="form-control-sm" formControlName="quantity" min="1" />
+                      </li>
+                      <li *ngIf="shoppingForm.value.quantity <= 1">
+                        <select class="custom-select" formControlName="color">
+                          <option value="">Select Color</option>
+                          <option value="White">White</option>
+                          <option value="Black">Black</option>
+                          <option value="Blue">Blue</option>
+                          <option value="Green">Green</option>
+                          <option value="Grey">Grey</option>
+                          <option value="Red">Red</option>
+                          <option value="Navy">Navy</option>
+                          <option value="Royal Blue">Royal Blue</option>
+                          <option value="charcoal">Charcoal</option>
+                          <option value="Maroon">Maroon</option>
+                        </select>
+                      </li>
+                      <li *ngIf="shoppingForm.value.quantity > 1">
+                        <select class="custom-select" formControlName="color" multiple>
+                          <option value="">Select Colors</option>
+                          <option value="White">White</option>
+                          <option value="Black">Black</option>
+                          <option value="Blue">Blue</option>
+                          <option value="Green">Green</option>
+                          <option value="Grey">Grey</option>
+                          <option value="Red">Red</option>
+                          <option value="Navy">Navy</option>
+                          <option value="Royal Blue">Royal Blue</option>
+                          <option value="charcoal">Charcoal</option>
+                          <option value="Maroon">Maroon</option>
+                        </select>
+                      </li>
+                    </ul>
+                    <button class="btn btn-primary" data-dismiss="modal" type="button"
+                    (click)="addToCart(shoppingForm.value,
+                    {'itemName': itemName,
+                      'itemPrice': itemPrice,
+                      'itemUrl': itemUrl,
+                      'itemDescription': itemDescription})">
+                      <i class="fas fa-plus mr-1"></i>Add to cart</button>
+                  </form>
+                </div>
+              </div>
+              <button class="btn btn-secondary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Close {{itemName}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<section class="page-section bg-light" id="order" *ngIf="cartList.length >= 1 || order">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Order</h2>
+      <h3 class="section-subheading text-muted">with Swag {{ success }}</h3>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 mb-12">
+        <div class="shop-item">
+          <form [formGroup]="orderForm">
+            <div class="row">
+              <div class="col-lg-6 col-sm-6 mb-4">
+                <div class="form-group">
+                  <label>Name</label><br />
+                  <input type="text"  class="form-control" formControlName="userName" placeholder="Your name" />
+                </div>
+
+                <div class="form-group">
+                  <label>Phone number</label><br />
+                  <input type="text" class="form-control" formControlName="userPhone" placeholder="Your phone number" />
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-4 mb-4">
+                <div class="shop-item">
+                  <div class="container">
+                    <div *ngFor="let item of cartList">
+                      <div class="card">
+                        <div class="card-header">
+                          {{item.order.quantity}} {{itemName}} R{{itemPrice}}
+                          {{item.order.quantity > 1 ? "each" : "" }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row submit-button-container">
+              <div class="col-md-4">
+                <button type="submit" (click)="order(orderForm.value)" class="btn btn-primary">Checkout</button>
+              </div>
+              <div class="col-md-4">
+                <button class="btn btn-secondary" (click)="clear()" type="button">
+                  Clear Cart</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section bg-light" id="order" *ngIf="success">
+  <div class="container">
+    <div class="text-center">
+      <div class="row thank-you">
+        <div class="col-lg-12 col-sm-12 mb-12">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="section-heading text-uppercase">Thank You</h2>
+            </div>
+            <div class="card-body">
+
+              <h3 class="section-subheading">
+                <img class="rounded-circle img-fluid"
+                    width="20%" height="20%" src="assets/img/prod/thankyoubag.jpeg" alt="Thank You Bag" />
+                    Your order has been received. We will contact you soon. <br />
+                    Customer need to make a payment <strong>within 3 working days</strong> after
+                    the confirmation of size and color. Please note that orders
+                    will take <strong>7 working days</strong> counting from the day the payment is received.
+                  </h3>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary" (click)="ok()" type="button">
+                Ok</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
