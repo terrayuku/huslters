@@ -96,7 +96,7 @@ export class CheckoutComponent implements OnInit {
     console.log(this.cartList);
   }
 
-  order(user) {
+  orderItem(user) {
     console.log(user, this.cartList);
     this.orderService.order(this.cartList, user)
       .then(res => {

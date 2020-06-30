@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Item } from '../models/item.model';
 import { AngularFireDatabase } from "@angular/fire/database";
 import { AngularFireStorage } from "@angular/fire/storage";
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,9 @@ addItem(value, image) {
                 itemPrice: value.price,
                 itemDescription: value.description,
                 itemOrder: value.itemOrder,
-                itemUrl: downloadURL
+                itemUrl: downloadURL,
+                id: value.id,
+                category: value.category
               }).then(response => {
                 console.log("Uploaded");
                 resolve(response);
@@ -43,8 +46,19 @@ addItem(value, image) {
     return new Promise<any>((resolve, reject) => {
       this.db.list("items").snapshotChanges()
         .subscribe(items => {
+          console.log(items);
           resolve(items);
         });
     });
+  }
+
+  getAllItemsInCategory(category) {
+    console.log("service", category);
+    return new Promise<any>((resolve, reject) => {
+      firebase.storage().ref().child('items').child(category).listAll().then(res => {
+        console.log("Category Items", res);
+        resolve(res);
+      }).catch(error => reject(error));
+    })
   }
 }

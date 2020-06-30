@@ -13,6 +13,7 @@ import { OrderComponent } from './order/order.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ReactiveFormsModule,
     AppRoutingModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

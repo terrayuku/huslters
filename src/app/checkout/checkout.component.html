@@ -104,10 +104,11 @@
                       'itemUrl': itemUrl,
                       'itemDescription': itemDescription})">
                       <i class="fas fa-plus mr-1"></i>Add to cart</button>
+                      <button style="margin-left: 4.6rem;" class="btn btn-secondary" data-dismiss="modal"
+                        type="button"><i class="fas fa-times mr-1"></i>Close {{itemName}}</button>
                   </form>
                 </div>
               </div>
-              <button class="btn btn-secondary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Close {{itemName}}</button>
             </div>
           </div>
         </div>
@@ -154,7 +155,7 @@
 
             <div class="row submit-button-container">
               <div class="col-md-4">
-                <button type="submit" (click)="order(orderForm.value)" class="btn btn-primary">Checkout</button>
+                <button type="submit" (click)="orderItem(orderForm.value)" class="btn btn-primary">Checkout</button>
               </div>
               <div class="col-md-4">
                 <button class="btn btn-secondary" (click)="clear()" type="button">

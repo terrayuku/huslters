@@ -26,7 +26,9 @@ export class AdditemComponent implements OnInit {
       price: ['', Validators.required],
       description: ['', Validators.required],
       itemOrder: ['', Validators.required],
-      image: ['', Validators.required]
+      image: ['', Validators.required],
+      id: ['', Validators.required],
+      category: ['', Validators.required]
     });
   }
 
