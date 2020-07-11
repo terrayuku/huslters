@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from "../services/order.service";
 import * as firebase from 'firebase';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-shoping',
@@ -20,6 +21,11 @@ export class ShopingComponent implements OnInit {
   success: Boolean;
   error: Boolean;
   shopping: Boolean;
+  itemName: String;
+  itemUrl: String;
+  itemPrice: String;
+  itemDescription: String;
+  selected: Boolean;
 
   paused = false;
   unpauseOnArrow = false;
@@ -30,12 +36,29 @@ export class ShopingComponent implements OnInit {
     public addItemService: AdditemService,
     public orderService: OrderService,
     private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    // this.createForm();
+    this.createForm();
     this.getAllItems();
-    this.getAllItemsInCategory('tshirts');
+  }
+
+  createForm() {
+    this.shoppingForm = this.fb.group({
+      small: [null, Validators.required],
+      medium: [null, Validators.required],
+      large: [null, Validators.required],
+      xlarge: [null, Validators.required],
+      xxlarge: [null, Validators.required],
+      quantity: [1, Validators.required],
+      color: [null, Validators.required]
+    });
+
+    this.orderForm = this.fb.group({
+      userName: ['', Validators.required],
+      userPhone: ['', Validators.required]
+    });
   }
 
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
@@ -75,15 +98,12 @@ export class ShopingComponent implements OnInit {
   }
 
   getAllItemsInCategory(category) {
-    console.log(category);
     this.addItemService.getAllItemsInCategory(category)
       .then(res => {
         res.items.forEach(element => {
-          console.log("Element", element.location.path);
           firebase.storage().ref().child(element.location.path).getDownloadURL().
             then(url => {
               this.listOfItemsInCategory.push(url);
-              console.log(this.listOfItemsInCategory);
             }).catch(error => {
               switch (error.code) {
                 case 'storage/object-not-found':
@@ -113,6 +133,53 @@ export class ShopingComponent implements OnInit {
     else
       this.shopping = true;
     console.log(this.shopping);
+  }
+
+  checkout(url, image, price, description, name) {
+    this.itemUrl = image;
+    this.itemPrice = price;
+    this.itemDescription = description;
+    this.itemName = name;
+    console.log(url, image, price, description, name);
+    this.selected = true;
+    this.shopping = false;
+    // ['checkout', categoryItemUrl, item.itemPrice, item.itemDescription, item.itemName]
+    // this.router.navigate([url, image, price, description, name]);
+  }
+
+  clear() {
+    this.cartList = [];
+  }
+
+  ok() {
+    this.success = false;
+    this.router.navigate(['']);
+    this.shopping = true;
+  }
+
+  addToCart(item) {
+    console.log(item);
+    this.selected = false;
+    this.shopping = true;
+    this.cartList.push({
+      "item": item
+    });
+    this.shoppingForm.reset();
+    console.log(this.cartList);
+  }
+
+  orderItem(user) {
+    console.log(user, this.cartList);
+    this.orderService.order(this.cartList, user)
+      .then(res => {
+        this.order = false;
+        this.success = true;
+        this.shoppingForm.reset();
+        this.cartList = [];
+      })
+      .catch(err => {
+        this.error = false;
+      });
   }
 
 }

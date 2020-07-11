@@ -1,8 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AdditemService } from "../services/additem.service";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from "../services/order.service";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
+import { AddOrder, OrderRemove } from '../actions/addorder.actions';
+
+import {Order} from '../models/order';
+import {select, Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-checkout',
@@ -22,26 +28,36 @@ export class CheckoutComponent implements OnInit {
   itemUrl: String;
   itemPrice: String;
   itemDescription: String;
+  orders: Observable<Order[]>;
+  url: string;
+
   constructor(
     public addItemService: AdditemService,
     public orderService: OrderService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-  ) { }
+    @Inject(DOCUMENT) private document: Document,
+    private store: Store<{ orders: Order[] }>
+  ) {
+    this.orders = store.pipe(select('orders'));
+    console.log(this.router.path);
+    this.url = this.router.url;
+  }
 
   ngOnInit(): void {
     this.createForm();
     this.getAllItems();
-    console.log(this.route.snapshot.paramMap.get('url'),
-    this.route.snapshot.paramMap.get('price'),
-    this.route.snapshot.paramMap.get('description'),
-    this.route.snapshot.paramMap.get('name')
-  );
+
     this.itemUrl = this.route.snapshot.paramMap.get('url');
     this.itemPrice = this.route.snapshot.paramMap.get('price');
     this.itemDescription = this.route.snapshot.paramMap.get('description');
     this.itemName = this.route.snapshot.paramMap.get('name');
+    // var i;
+    // for(i = 0; i > 1; i++) {
+    //   console.log("Refresh")
+
+    // }
   }
 
 
@@ -94,6 +110,20 @@ export class CheckoutComponent implements OnInit {
     });
     this.shoppingForm.reset();
     console.log(this.cartList);
+  }
+
+  addOrder(item) {
+    const order = new Order();
+    order.name = item.itemName;
+    order.description = item.itemDescription;
+    order.price = item.itemPrice;
+    order.color = item.itemColor;
+    order.quantity = item.itemQuantity;
+    order.url = item.itemUrl;
+
+    console.log(order);
+
+    this.store.dispatch(new AddOrder(order));
   }
 
   orderItem(user) {

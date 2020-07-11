@@ -19,7 +19,7 @@
       </ul>
       <ul class="navbar-nav text-uppercase ml-auto">
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#order">
+          <a class="nav-link js-scroll-trigger" href="{{url}}/#order">
             <i class="fas fa-shopping-cart"></i>
           </a>
         </li>
@@ -98,11 +98,13 @@
                       </li>
                     </ul>
                     <button class="btn btn-primary" data-dismiss="modal" type="button"
-                    (click)="addToCart(shoppingForm.value,
+                    (click)="addOrder(
                     {'itemName': itemName,
                       'itemPrice': itemPrice,
                       'itemUrl': itemUrl,
-                      'itemDescription': itemDescription})">
+                      'itemDescription': itemDescription,
+                      'itemColor': shoppingForm.value.color,
+                      'itemQuantity': shoppingForm.value.quantity})">
                       <i class="fas fa-plus mr-1"></i>Add to cart</button>
                       <button style="margin-left: 4.6rem;" class="btn btn-secondary" data-dismiss="modal"
                         type="button"><i class="fas fa-times mr-1"></i>Close {{itemName}}</button>
@@ -115,7 +117,7 @@
       </div>
     </div>
 
-<section class="page-section bg-light" id="order" *ngIf="cartList.length >= 1 || order">
+<section class="page-section bg-light" id="order">
   <div class="container">
     <div class="text-center">
       <h2 class="section-heading text-uppercase">Order</h2>
@@ -140,12 +142,16 @@
               <div class="col-lg-4 col-sm-4 mb-4">
                 <div class="shop-item">
                   <div class="container">
-                    <div *ngFor="let item of cartList">
+                    <div *ngFor="let order of orders | async; let i=index">
                       <div class="card">
                         <div class="card-header">
-                          {{item.order.quantity}} {{itemName}} R{{itemPrice}}
-                          {{item.order.quantity > 1 ? "each" : "" }}
+                          {{order.quantity}} {{order.name}} R{{order.price}}
+                          {{order.quantity > 1 ? "each" : "" }}
                         </div>
+                      </div>
+                      <div class="col-md-4">
+                        <button class="btn btn-secondary" (click)="clear(i)" type="button">
+                          Remove Item</button>
                       </div>
                     </div>
                   </div>
@@ -156,10 +162,6 @@
             <div class="row submit-button-container">
               <div class="col-md-4">
                 <button type="submit" (click)="orderItem(orderForm.value)" class="btn btn-primary">Checkout</button>
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-secondary" (click)="clear()" type="button">
-                  Clear Cart</button>
               </div>
             </div>
           </form>
