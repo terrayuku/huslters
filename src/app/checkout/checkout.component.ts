@@ -41,8 +41,6 @@ export class CheckoutComponent implements OnInit {
     private store: Store<{ orders: Order[] }>
   ) {
     this.orders = store.pipe(select('orders'));
-    console.log(this.router.path);
-    this.url = this.router.url;
   }
 
   ngOnInit(): void {

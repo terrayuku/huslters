@@ -26,6 +26,7 @@ export class ShopingComponent implements OnInit {
   itemPrice: String;
   itemDescription: String;
   selected: Boolean;
+  order: Boolean;
 
   paused = false;
   unpauseOnArrow = false;
