@@ -99,6 +99,7 @@ export class ShopingComponent implements OnInit {
   }
 
   getAllItemsInCategory(category) {
+    this.listOfItemsInCategory = [];
     this.addItemService.getAllItemsInCategory(category)
       .then(res => {
         res.items.forEach(element => {
