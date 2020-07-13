@@ -19,8 +19,9 @@
       </ul>
       <ul class="navbar-nav text-uppercase ml-auto">
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#order">
+          <a class="nav-link js-scroll-trigger notification" href="#order">
             <i class="fas fa-shopping-cart"></i>
+            <span class="badge" *ngIf="cartList.length > 0">{{cartList.length}}</span>
           </a>
         </li>
     </ul>
@@ -195,8 +196,6 @@
                       'itemColor': shoppingForm.value.color,
                       'itemQuantity': shoppingForm.value.quantity})">
                       <i class="fas fa-plus mr-1"></i>Add to cart</button>
-                      <button style="margin-left: 4.6rem;" class="btn btn-secondary" data-dismiss="modal"
-                        type="button"><i class="fas fa-times mr-1"></i>Close {{itemName}}</button>
                   </form>
                 </div>
               </div>
