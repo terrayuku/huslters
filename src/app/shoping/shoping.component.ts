@@ -21,6 +21,7 @@ export class ShopingComponent implements OnInit {
   success: Boolean;
   error: Boolean;
   shopping: Boolean;
+  id: String;
   itemName: String;
   itemUrl: String;
   itemPrice: String;
@@ -137,12 +138,13 @@ export class ShopingComponent implements OnInit {
     console.log(this.shopping);
   }
 
-  checkout(url, image, price, description, name) {
+  checkout(url, image, price, description, name, id) {
     this.itemUrl = image;
     this.itemPrice = price;
     this.itemDescription = description;
     this.itemName = name;
-    console.log(url, image, price, description, name);
+    this.id = id;
+    console.log(url, image, price, description, name, id);
     this.selected = true;
     this.shopping = false;
     // ['checkout', categoryItemUrl, item.itemPrice, item.itemDescription, item.itemName]
@@ -151,6 +153,15 @@ export class ShopingComponent implements OnInit {
 
   clear() {
     this.cartList = [];
+  }
+
+  removeItem(itemIndex) {
+    this.cartList.slice(itemIndex, 1);
+    for(var index = 0; index <= this.cartList.length; index++) {
+      if(index === itemIndex) {
+        this.cartList.splice(itemIndex, 1);
+      }
+    }
   }
 
   ok() {

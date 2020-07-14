@@ -85,8 +85,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  margin-top: 0;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
 abbr[title],
@@ -5858,9 +5857,14 @@ a.close.disabled {
   }
 
   .carousel-caption {
-    top: 25rem !important;
+    top: 23rem !important;
     right: 70% !important;
   }
+}
+
+.remove {
+  display: inline !important;
+  margin-left: 17rem;
 }
 
 .carousel-inner::after {

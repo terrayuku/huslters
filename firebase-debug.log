@@ -1,0 +1,17 @@
+[debug] [2020-07-14T22:42:16.980Z] ----------------------------------------------------------------------
+[debug] [2020-07-14T22:42:16.983Z] Command:       /usr/local/Cellar/node/13.2.0/bin/node /usr/local/bin/firebase deploy
+[debug] [2020-07-14T22:42:16.984Z] CLI Version:   8.5.0
+[debug] [2020-07-14T22:42:16.984Z] Platform:      darwin
+[debug] [2020-07-14T22:42:16.984Z] Node Version:  v13.2.0
+[debug] [2020-07-14T22:42:17.004Z] Time:          Wed Jul 15 2020 00:42:16 GMT+0200 (South Africa Standard Time)
+[debug] [2020-07-14T22:42:17.005Z] ----------------------------------------------------------------------
+[debug] [2020-07-14T22:42:17.005Z] 
+[debug] [2020-07-14T22:42:17.023Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-07-14T22:42:17.023Z] > authorizing via signed-in user
+[debug] [2020-07-14T22:42:17.024Z] [iam] checking project hustlersld for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2020-07-14T22:42:17.027Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-07-14T22:42:17.028Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-07-14T22:42:17.796Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 14 Jul 2020 22:42:17 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-07-14T22:42:17.817Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/hustlersld:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}

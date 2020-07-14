@@ -12,7 +12,7 @@ export class OrderService {
 
   order(order, person) {
     return new Promise<any>((resolve, rejects) => {
-      this.db.database.ref("orders/" + person.userName + person.userPhone).
+      this.db.database.ref("orders/" + person.userName + "-" + person.userPhone).
         set({
           person: person,
           order: order

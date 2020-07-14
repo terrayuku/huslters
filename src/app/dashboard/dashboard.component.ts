@@ -22,12 +22,11 @@ export class DashboardComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.createForm();
-    this.getAllOrders();
   }
 
   ngOnInit(): void {
 
-    console.log(this.afAuth.currentUser);
+    this.getAllOrders();
   }
 
   createForm() {
@@ -45,7 +44,7 @@ export class DashboardComponent implements OnInit {
       .then(orders => {
         console.log(orders);
         orders.forEach(i => {
-            console.log(i.payload.val(), i.payload.key);
+            console.log(i.payload.val());
             this.orders.push(i.payload.val());
         })
       })
@@ -55,12 +54,10 @@ export class DashboardComponent implements OnInit {
   }
 
   doLogin(value){
-    console.log(value);
     return new Promise<any>((resolve, reject) => {
       firebase.auth().signInWithEmailAndPassword(value.email, value.password)
       .then(res => {
         this.loggedIn = true;
-        console.log(res);
       }, err => reject(err))
     })
   }

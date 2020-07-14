@@ -5,7 +5,6 @@ import { OrderService } from "../services/order.service";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { AddOrder, OrderRemove } from '../actions/addorder.actions';
-
 import {Order} from '../models/order';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -111,17 +110,17 @@ export class CheckoutComponent implements OnInit {
   }
 
   addOrder(item) {
-    const order = new Order();
-    order.name = item.itemName;
-    order.description = item.itemDescription;
-    order.price = item.itemPrice;
-    order.color = item.itemColor;
-    order.quantity = item.itemQuantity;
-    order.url = item.itemUrl;
-
-    console.log(order);
-
-    this.store.dispatch(new AddOrder(order));
+    // const order = new Order();
+    // order.name = item.itemName;
+    // order.description = item.itemDescription;
+    // order.price = item.itemPrice;
+    // order.color = item.itemColor;
+    // order.quantity = item.itemQuantity;
+    // order.url = item.itemUrl;
+    //
+    // console.log(order);
+    //
+    // this.store.dispatch(new AddOrder(order));
   }
 
   orderItem(user) {

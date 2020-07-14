@@ -1,19 +1,19 @@
 export class Order {
-  name: string;
-  description: string;
-  price: string;
-  sizes: string;
-  color: string;
-  quantity: string;
-  url: string;
+  itemName: string;
+  itemDescription: string;
+  itemPrice: string;
+  itemSize: string;
+  itemColor: string;
+  itemQuantity: string;
+  itemUrl: string;
 
   constructor() {
-    name: "";
-    description: "";
-    price: "";
-    sizes: "";
-    color: "";
-    quantity: "";
-    url: "";
+    itemName: "";
+    itemDescription: "";
+    itemPrice: "";
+    itemSize: "";
+    itemColor: "";
+    itemQuantity: "";
+    itemUrl: "";
   }
 }

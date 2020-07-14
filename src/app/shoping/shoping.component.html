@@ -78,7 +78,7 @@
                                 <div class="carousel-caption">
                                   <h3>{{item.itemDescription}}</h3>
                                   <a class="btn btn-primary" data-dismiss="modal" href="#{{itemName}}"
-                                  (click)="checkout('checkout', categoryItemUrl, item.itemPrice, item.itemDescription, item.itemName)">
+                                  (click)="checkout('checkout', categoryItemUrl, item.itemPrice, item.itemDescription, item.itemName, item.id)">
                                     <i class="fas fa-plus mr-1"></i>Select</a>
                                 </div>
                                </ng-template>
@@ -142,15 +142,15 @@
                         <label class="col-form-label-lg" for="size" style="padding-right: 5px;">Size </label>
 
                         <label class="col-form-label-sm" for="small">S</label>
-                        <input type="checkbox" class="custom-checkbox" formControlName="small" value="small" />
+                        <input type="checkbox" class="custom-checkbox" formControlName="small" value="Small" />
                         <label class="col-form-label-sm" for="medium">M</label>
-                        <input type="checkbox" class="custom-checkbox" formControlName="medium" value="medium" />
+                        <input type="checkbox" class="custom-checkbox" formControlName="medium" value="Medium" />
                         <label class="col-form-label-sm" for="large">L</label>
-                        <input type="checkbox" class="custom-checkbox" formControlName="large" value="large" />
+                        <input type="checkbox" class="custom-checkbox" formControlName="large" value="Large" />
                         <label class="col-form-label-sm" for="xlarge">XL</label>
-                        <input type="checkbox" class="custom-checkbox" formControlName="xlarge" value="xlarge" />
+                        <input type="checkbox" class="custom-checkbox" formControlName="xlarge" value="XLarge" />
                         <label class="col-form-label-sm" for="xxlarge">XXL</label>
-                        <input type="checkbox" class="custom-checkbox" formControlName="xxlarge" value="xxlarge" />
+                        <input type="checkbox" class="custom-checkbox" formControlName="xxlarge" value="XXLarge" />
                       </li>
                       <li>
                         <label class="col-form-label-lg" for="quantity" style="padding-right: 5px;">Quantity </label>
@@ -189,9 +189,11 @@
                     </ul>
                     <button class="btn btn-primary" data-dismiss="modal" type="button"
                     (click)="addToCart(
-                    {'itemName': itemName,
-                      'itemPrice': itemPrice,
+                    {'id': id,
                       'itemUrl': itemUrl,
+                      'itemName': itemName,
+                      'itemPrice': itemPrice,
+                      'itemSize': shoppingForm.value,
                       'itemDescription': itemDescription,
                       'itemColor': shoppingForm.value.color,
                       'itemQuantity': shoppingForm.value.quantity})">
@@ -230,11 +232,20 @@
                   <div class="col-lg-4 col-sm-4 mb-4">
                     <div class="shop-item">
                       <div class="container">
-                        <div *ngFor="let order of cartList">
+                        <div *ngFor="let order of cartList; let i=index">
                           <div class="card">
                             <div class="card-header">
-                              {{order.item.itemQuantity}} {{order.item.itemName}} R{{order.item.itemPrice}}
-                              {{order.item.itemQuantity > 1 ? "each" : "" }}
+                              <div class="row">
+                                <div class="col-md-10">
+                                  {{order.item.itemQuantity}} {{order.item.itemName}} R{{order.item.itemPrice}}
+                                  {{order.item.itemQuantity > 1 ? "each" : "" }}
+                                </div>
+                                <div class="col-md-2">
+                                  <a class="js-scroll-trigger" (click)="removeItem(i)">
+                                    <span class="fas fa-times"></span>
+                                  </a>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
