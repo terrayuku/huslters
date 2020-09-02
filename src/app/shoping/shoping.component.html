@@ -31,9 +31,10 @@
 <!-- Masthead-->
 <header class="masthead">
   <div class="container">
-    <div class="masthead-heading">Victory Loves Preparation</div>
+
     <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#shop"
     (click)="showShop()">Shop</a>
+    <div class="masthead-heading" style="margin-top:15rem;">Victory Loves Preparation</div>
   </div>
 </header>
 
@@ -54,7 +55,7 @@
             <img class="img-fluid" src="{{item.itemUrl}}" alt="item.itemName" /></a>
           <div class="shop-caption">
             <div class="shop-caption-heading">{{item.itemName}}</div>
-            <div class="shop-caption-subheading text-muted">{{item.itemDescription}}</div>
+            <!-- <div class="shop-caption-subheading text-muted">{{item.itemDescription}}</div> -->
           </div>
         </div>
 
@@ -71,7 +72,7 @@
                             <ngb-carousel #carousel  [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)">
                               <ng-template class="carousel-item" ngbSlide *ngFor="let categoryItemUrl of listOfItemsInCategory">
                                 <div class="row row-margin">
-                                  <div class="col-lg-4 col-sm-6 mb-4">
+                                  <div class="col-lg-5 col-sm-6 mb-4">
                                     <img class="img-fluid d-block mx-auto" [src]="categoryItemUrl" alt="{{item.itemDescription}}" />
                                   </div>
                                 </div>
@@ -221,12 +222,13 @@
                   <div class="col-lg-6 col-sm-6 mb-4">
                     <div class="form-group">
                       <label>Name</label><br />
-                      <input type="text"  class="form-control" formControlName="userName" placeholder="Your name" />
+                      <input type="text" required  class="form-control" formControlName="userName" placeholder="Your name" />
                     </div>
 
                     <div class="form-group">
                       <label>Phone number</label><br />
-                      <input type="text" class="form-control" formControlName="userPhone" placeholder="Your phone number" />
+                      <input type="number" maxlength="10" pattern="^[0-9]$"
+                        required class="form-control" formControlName="userPhone" placeholder="Your phone number" />
                     </div>
                   </div>
                   <div class="col-lg-4 col-sm-4 mb-4">
@@ -241,7 +243,7 @@
                                   {{order.item.itemQuantity > 1 ? "each" : "" }}
                                 </div>
                                 <div class="col-md-2">
-                                  <a class="js-scroll-trigger" (click)="removeItem(i)">
+                                  <a class="js-scroll-trigger" href="#shop" (click)="removeItem(i)">
                                     <span class="fas fa-times"></span>
                                   </a>
                                 </div>

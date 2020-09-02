@@ -36,10 +36,10 @@
       <h3 class="section-subheading text-muted">with Swag</h3>
     </div>
     <div class="row">
-      <div class="col-lg-4 col-sm-6 mb-4" *ngFor="let order of orders; let i=index">
+      <div class="col-lg-4 col-sm-6 mb-4" *ngFor="let order of orders;">
         <div class="shop-item">
-          <a class="shop-link" data-toggle="modal" href="#{{order.order[i].item.id}}">
-            <img class="img-fluid" src="{{order.order[i].item.itemUrl}}" alt=""
+          <a class="shop-link" data-toggle="modal" href="#{{order.order[0].item.id}}">
+            <img class="img-fluid" src="{{order.order[0].item.itemUrl}}" alt=""
             /></a>
           <div class="shop-caption">
             <div class="shop-caption-heading">{{order.person.userName}}</div>
@@ -48,7 +48,7 @@
           </div>
         </div>
 
-        <div class="shop-modal modal fade" id="{{order.order[i].item.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="shop-modal modal fade" id="{{order.order[0].item.id}}" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" /></div>

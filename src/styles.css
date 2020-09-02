@@ -1320,7 +1320,7 @@ pre code {
 
   .col-lg-4 {
     flex: 0 0 33.3333333333%;
-    max-width: 33.3333333333%;
+    max-width: 16.3333333333%;
   }
 
   .col-lg-5 {
@@ -5972,7 +5972,7 @@ a.close.disabled {
   }
 
   .carousel-control-next {
-    right: 22rem;
+    right: 15rem;
   }
 }
 
@@ -6045,7 +6045,7 @@ a.close.disabled {
   position: absolute;
   bottom: 20px;
   right: 70%;
-  left: 4% !important;
+  left: 11% !important;
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -10179,7 +10179,7 @@ header.masthead {
   background-attachment: scroll;
   background-position: top left;
   background-size: cover;
-  margin-top: 5rem !important;
+  /* margin-top: 5rem !important; */
 }
 header.masthead .masthead-subheading {
   font-size: 1.5rem;
@@ -10257,7 +10257,7 @@ header.masthead .masthead-heading {
   opacity: 1;
 }
 #shop .shop-item .shop-caption {
-  padding: 1.5rem;
+  padding: 1rem;
   text-align: center;
   background-color: #fff;
 }
